@@ -9241,14 +9241,6 @@ var felix = process.env.felix_id
 var owner_attacker = process.env.owner_attacker
 var owner_c = process.env.owner_costiko_id
 var bt_ids = process.env.bt_id_1
-bot.on('ready', () => {                             
-    console.log('Bot ready!');    
-    var canLogToDiscord = true
-});
-bot2.on('ready', () => {                             
-    console.log('Bot ready!');    
-    var canLogToDiscord = true
-});
 
 function unauth(level_required) { return '```patch\n- ERROR: INSUFFICIENT PERMISSION LEVEL\n- PERMISSION LEVEL ' + String(level_required) + ' IS REQUIRED```' }
 function arg_error(required, submitted) { return '```patch\n- ERROR: INSUFFICIENT ARGUMENTS SUPPLIED\n- ' + String(required) + ' ARGUMENTS ARE REQUIRED```' }
@@ -9257,187 +9249,23 @@ function parse(input) {
   let out =  input.split(" "); 
   return out
 }
-let spawnArenaClosers = count => {
-    let i
-        for (i = 1; i < count+1; i++) {
-            let spot, i = 30;
-            do { spot = room.randomType('nest'); i--; if (!i) return 0; } while (dirtyCheck(spot, 100));
-            
-            let o = new Entity(room.random());
-                  {
-                    o.color = 3;
-                    o.define(Class.arenaCloser);
-                    o.define({ CAN_BE_ON_LEADERBOARD: false, });
-                    o.name = "Arena Closer"
-                    o.refreshBodyAttributes();
-                    o.color = 3;
-                    o.team = -100
-                  }
-        }
-  };
-let spawnboss = count => {
-    let i
-        for (i = 1; i < count+1; i++) {
-           let spot, i = 30;
-            do { spot = room.randomType('nest'); i--; if (!i) return 0; } while (dirtyCheck(spot, 100));
-            
-            let o = new Entity(room.random());
-                  {
-                    o.color = 3;
-                    o.define(Class.summoner);
-                    o.define({ CAN_BE_ON_LEADERBOARD: true, });
-                    o.name = "summoned boss by a developer"
-                    o.refreshBodyAttributes();
-                    o.color = 5;
-                    o.team = -100
-                  }
-        }
-  };
-// =========================================================
-    // MODIFIED: Phantom Zone walls Generator.
-    // =========================================================
-    const PhantomZoneGenerator = class {       
-        generate() {            
-            let scale = 70;
-            let count = 0;
-            let startX = -(room.width / 3);
-            let startY = (room.height * 2/5);
-            let numWallsAcross = 10;
-            let numWallsDown = 10;
-
-            for (let x = 0; x < numWallsAcross; x++)
-            {
-                for (let y = 0; y < numWallsDown; y++)
-                {
-                    if (x === 0 || y === 0 || x === (numWallsAcross - 1) || y === (numWallsDown - 1)){
-                        let wall = new Entity(
-                            {
-                                x: startX + (x + 0.3) * scale,
-                                y: startY + (y + 0.2) * scale
-                            });
-                            wall.define(Class.phantomZoneWall);                
-                            wall.SIZE = 0.7 * scale;
-                            wall.team = -101;                
-                            wall.protect();
-                            wall.life();
-                            count++;
-                    }                
-                }
-            }
-                    
-            util.log('*** Placed ' + count + ' phantom zone walls. ***');
-            return this;
-        }
-    };
-
-    
-
-    // =========================================================
- function generateMaze(size) {
-    let maze = JSON.parse(JSON.stringify(Array(size).fill(Array(size).fill(true))));
-    maze[0] = Array(size).fill(false);
-    maze[size - 1] = Array(size).fill(false);
-    maze[Math.floor(size * 0.3)] = [true, true, true, true, ...Array(size - 8).fill(false), true, true, true, true];
-    maze[Math.floor(size - size * 0.3)] = [true, true, true, true, ...Array(size - 8).fill(false), true, true, true, true];
-    for (let line of maze) {
-      let i = maze.indexOf(line);
-      line[0] = false;
-      line[size - 1] = false;
-      if (i > 3 && i < size - 3) line[Math.floor(size * 0.3)] = 0;
-      if (i > 3 && i < size - 3) line[Math.floor(size - size * 0.3)] = 0;
-    }
-    let center = Math.floor(size * 0.4);
-    for (let x = center; x < center + Math.floor(size * 0.2); x ++)
-      for (let y = center; y < center + Math.floor(size * 0.2); y ++) maze[x][y] = false;
-    let eroded = 1,
-        toErode = (size * size) / 2.5;
-    for (let i = 0; i < toErode; i ++) {
-      if (eroded >= toErode) {
-        console.log("Done!");
-        break;
-      }
-      for (let i = 0; i < 10000; i++) {
-        let x = Math.floor(Math.random() * size);
-        let y = Math.floor(Math.random() * size);
-        if (maze[x][y]) continue;
-        if ((x === 0 || x === size - 1) && (y === 0 || y === size - 1)) continue;
-        let direction = Math.floor(Math.random() * 4);
-        if (x === 0) direction = 0;
-        else if (y === 0) direction = 1;
-        else if (x === size - 1) direction = 2;
-        else if (y === size - 1) direction = 3;
-        let tx = direction === 0 ? x + 1 : direction === 2 ? x - 1 : x;
-        let ty = direction === 1 ? y + 1 : direction === 3 ? y - 1 : y;
-        if (maze[tx][ty] !== true) continue;
-        maze[tx][ty] = false;
-        eroded ++;
-        break;
-      }
-    }
-    if (eroded) {
-      for (let x = 0; x < size - 1; x ++)
-        for (let y = 0; y < size - 1; y ++)
-          if (maze[x][y] && maze[x + 1][y] && maze[x + 2][y] && maze[x][y + 1] && maze[x][y + 2]  && maze[x + 1][y + 2]  && maze[x + 2][y + 1] && maze[x + 1][y + 1] && maze[x + 2][y + 2]) {
-            maze[x][y] = 3;
-            maze[x + 1][y] = false;
-            maze[x][y + 1] = false;
-            maze[x + 2][y] = false;
-            maze[x][y + 2] = false;
-            maze[x + 2][y + 1] = false;
-            maze[x + 1][y + 2] = false;
-            maze[x + 1][y + 1] = false;
-            maze[x + 2][y + 2] = false;
-          } else if (maze[x][y] && maze[x + 1][y] && maze[x][y + 1] && maze[x + 1][y + 1]) {
-            maze[x][y] = 2;
-            maze[x + 1][y] = false;
-            maze[x][y + 1] = false;
-            maze[x + 1][y + 1] = false;
-          }
-      for (let x = 0; x < size; x++) {
-        for (let y = 0; y < size; y++) {
-          let spawnWall = true;
-          let d = {};
-          let scale = room.width / size;
-          if (maze[x][y] === 3) d = { x: (x * scale) + (scale * 1.5), y: (y * scale) + (scale * 1.5), s: scale * 3, sS: 5 };
-          else if (maze[x][y] === 2) d = { x: (x * scale) + scale, y: (y * scale) + scale, s: scale * 2, sS: 2.5 };
-          else if (maze[x][y]) d = { x: (x * scale) + (scale * 0.5), y: (y * scale) + (scale * 0.5), s: scale, sS: 1 };
-          else spawnWall = false;
-          if (spawnWall) {
-            let o = new Entity({
-              x: d.x,
-              y: d.y
-            });
-            o.define(Class.mazeWall);
-            o.SIZE = (d.s * 0.5) + d.sS;
-            o.team = -101;
-            o.protect();
-            o.life();
-          }
-        }
-      }
-    }
- }
-
- // inside a command, event listener, etc.
-/*const exampleEmbed = new EmbedBuilder()
-	.setColor(0x0099FF)
-	.setTitle('Some title')
-	.setURL('https://discord.js.org/')
-	.setAuthor({ name: 'Some name', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://discord.js.org' })
-	.setDescription('Some description here')
-	.setThumbnail('https://i.imgur.com/AfFp7pu.png')
-	.addFields(
-		{ name: 'Regular field title', value: 'Some value here' },
-		{ name: '\u200B', value: '\u200B' },
-		{ name: 'Inline field title', value: 'Some value here', inline: true },
-		{ name: 'Inline field title', value: 'Some value here', inline: true },
-	)
-	.addFields({ name: 'Inline field title', value: 'Some value here', inline: true })
-	.setImage('https://i.imgur.com/AfFp7pu.png')
-	.setTimestamp()
-	.setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
-  */
-bot.on('messageCreate', (msg) => {
+client.on('messageCreate', (msg) => {
+if (msg.content.startsWith(prefix + 'help')){
+console.log('recieved help command trigger')
+ let helpEmbed = new EmbedBuilder()
+   .setTitle('Help')
+   .setColor('#F453F5')
+      .addFields(
+        { name: '> **help**', value: 'Sends this message' },
+        { name: '> **kill [id]**', value: 'Kills a player selected by id(authorization required)' },
+        { name: '> **kick [id]**', value: 'kicks a player selected by id(authorization required)' },
+         { name: '> **kick [id]**', value: 'kicks a player selected by id(authorization required)' }
+      )
+      .setTimestamp();
+    msg.reply({embeds: [helpEmbed]})
+}
+})
+/* bot.on('messageCreate', (msg) => {
   try {
     
     if (msg.content.startsWith(prefix + "select ")) {
@@ -9559,16 +9387,17 @@ bot.on('messageCreate', (msg) => {
   bot.createMessage(msg.channel.id, String(err));
 }
   
-  if (msg.content == prefix + 'help' ) {
+if (msg.content.startsWith(prefix + 'help')) {
  let helpEmbed = new EmbedBuilder()
    .setTitle('Help')
    .setColor('#F453F5')
       .addFields(
-        { name: '> **help**', value: '' },
-        { name: 'User Count', value: membercount.toString() }
+        { name: '> **help**', value: 'Sends this message' },
+        { name: '> **kill [id]', value: 'Kills a player selected by id(authorization required)' }
       )
       .setTimestamp();
-  
+    msg.channel.send({embeds: [helpEmbed]})
+  }
   
   if (msg.content.startsWith(prefix + "bc ")) {
        if (msg.author.id == owner_id || msg.author.id === owner_attacker || msg.author.id === owner_c || msg.author.id === felix) {
@@ -9737,47 +9566,8 @@ bot.createMessage(msg.channel.id,  'Only in __DM__ please.')
   }}
   
   
-});
+}); */
 
-/*const closeArena = (socket, clients, args) => {
-    try {
-       if (socket.player != null && args.length === 2) {
-       let isMember = isUsertrustedowner(socket.role);
-       
-  if (isMember){
-    let spawnArenaClosers = count => {
- 
-    let i
-        for (i = 1; i < count+1; i++) {
-            let spot, i = 30;
-            do { spot = room.randomType('nest'); i--; if (!i) return 0; } while (dirtyCheck(spot, 100));
-         
-            let o = new Entity(room.random());
-                  {
-                    o.color = 3;
-                    o.define(Class.arenaCloser);
-                    o.define({ CAN_BE_ON_LEADERBOARD: false, });
-                    o.name = "Arena Closer"
-                    o.refreshBodyAttributes();
-                    o.color = 3;
-                    o.team = -100
-                  };
-        //   arena_open =false;
-
-            }
-  };
-    let count = args[1]
-    if (count >5) {socket.player.body.sendMessage('max count is 5')} else {
-    spawnArenaClosers(count)}
-  } else {socket.player.body.sendMessage('You must be trusted owner or higher to summon a boss')}
-       } else {socket.player.body.sendMessage("usage: /closearena [count max 5]");}
-    }
-    catch (error) {
-        util.error('[closeArena()]');
-        util.error(error);
-    }
-}; */
- 
 if (c.server_closed) {bot.editStatus('Idle', {
   name: 'Server Closed',
   type: 2
