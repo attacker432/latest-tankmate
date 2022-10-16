@@ -9213,7 +9213,7 @@ const client = new Client({
 });
 
 client.login(process.env.bot_token);
-
+client.user.setActivity('The susy tankmate server', { type: 'WATCHING' });
 
 const bot = new Eris(process.env.bot_token); 
 const bot2 = new Eris(process.env.bot_token);
