@@ -1,0 +1,107 @@
+{
+  "C775E7B757EDE630CD0AA1113BD102661AB38829CA52A6422AB782862F268646": {
+    "name": " Felix",
+    "role": "developer",
+    "system": "true",
+    "color": "dark green",
+    "Last Updated By": "[Felix]"
+   
+  },
+  "D4BF5610A03C26283C6B9AB6C380D48816E8E60696184D76FE412E296671501E": {
+    "name": " attacker",
+    "role": "developer",
+    "system": "true"
+    
+  },
+  "BFC5A1BDFD37961B3140478FD71C045CF1398297FEFE49C1A28EA5E07CF6D7C2": {
+    "name": " Costikooo",
+    "role": "developer",
+    "system": "true",
+    "Last Updated By": "[Felix]"
+   
+  },
+  "3F094B4999FEC51A600AEBB7B2C7B115215FF7BBC043749BD602454C7C8D4FFC": {
+    "name": "Fallout4",
+    "role": "co-dev"
+    
+  },
+  "D868429E25DFD214CC373DCC6E49E4E671CF4E79FEE4D2493873A65ADE8E808C": {
+    "name": "triangle",
+    "role": "owner"
+    
+  },
+  "501E3161511360FA5821F10A79B230D4F6A5827598FBC284A74F065B611BDE2C": {
+    "name": "FireName",
+    "role": "admin"
+    
+  },
+  "422A8342A6F0E659B52FBED9D5ACCA722B1AFFF9B7482B511814681B24618C3C": {
+    "name": "Twysted",
+    "role": "admin"
+
+  },
+  "EFAF731350E848ED501D86F6EFECD4D53125E22B0681415E31A6E18367DCB596": {
+    "name": "triangle2",
+    "role": "bug finder"
+    
+  },
+  "F4ECFEA468FC26A7F9BF82FE7BE54C1A427ADDAC0BFE1E40F0B803A763853711": {
+    "name": " Gowther",
+    "role": "admin"
+    
+  },
+  "45245B27ACFDD9F2F59C6E6AA58C835867F2AEB82FEEF14299083926607158D6": {
+    "name": " Fallen Overlord(Pro)",
+    "role": "ambassador"
+    
+ },
+  "004C5505872F96B5E858AD7DC92883C2443512D4F45EF638076F3807937E7DB3": {
+    "name": " DK",
+    "role": "trusted member"
+    
+ },
+  "0DE9DD44218FB63071829EC8B423680189F74DD38B75C34BD366794F8108F9D6": {
+    "name": " Tricky",
+    "role": "developer"
+    
+},
+  "CB74B011CACB3DA551F92DA950D1BEF29453357EE1ACA7B44474A1B3379BF112": {
+    "name": " Saif",
+    "role": "trusted member"
+},
+  "91A0CFAA688B7E7B5A25001D041722E1733BCC3B89734BD21644A57BC83A6948": {
+    "name": " Cryptic_Fear",
+    "role": "owner"
+    
+},
+  "7554E8869DDDDCC5F718F8AD2EE94C875E074C9033C9BD9D77A8DAD50455CC27": {
+    "name": " Hellotankster",
+    "role": "trusted member",  
+    "Last Updated by": "[Costikoooo]"
+    
+  },
+  "EC0C5B97D2B07DADFE1A23CA4C93F41D6C87F1FFE55E4E2CB206B22F91178F77": {
+    "name": " Bbom",
+    "role": "trusted member", 
+    "system": "true",
+    "Last Updated by": "[Felix]"
+    
+},
+  "E574960CEBAD811666D70B76B0C2E9B73780B45F857D8B42B36746E12E1BB0C1": {
+    "name": " ♡𝙻𝚊𝚗𝚊♡",
+    "role": "member",  
+    "system": "true",
+    "color": "blue", 
+    "Last Updated by": "[Felix]"
+    
+},
+  "67ABAFAB0C5A4F2CED15EA2047FA2D609C13DB21272B1548838F55329C5581CD": {
+    "name": " a yoyo loach",
+    "role": "moderator",  
+    "system": "true",
+    "color": "yellow",
+    "Last Updated by": "[Felix]"
+    
+
+ }
+}

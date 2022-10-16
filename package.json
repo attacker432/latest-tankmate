@@ -1,0 +1,29 @@
+{
+  "name": "arras",
+  "version": "2.5.9",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server"
+  },
+  "dependencies": {
+    "eris": "^0.15.0",
+    "google-closure-library": "^20220803.0.0",
+    "node-fetch": "^2.6.1",
+    "ws": "^6.1.4",
+    "express": "latest",
+    "g4js-firewall": "^0.1.2",
+    "hastebin-gen": "^2.0.5",
+    "djs-commands": "^1.2.2",
+    "approximate-number": "^2.0.0",
+    "request": "^2.88.0",
+    "eris-embed-builder": "^0.1.2",
+    "eris-embed": "^2.1.0"
+  },
+  "engines": {
+    "node": "10.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/hello-express"
+  },
+  "license": "ISC"
+}
