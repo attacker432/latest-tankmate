@@ -9222,7 +9222,7 @@ if(msg.content.startsWith(`${prefix}test`)){
     let membercount = 0;
     msg.client.guilds.cache.forEach((guild) => membercount += guild.memberCount);
   const infoEmbed = new EmbedBuilder()
-      .setColor('#F59')
+      .setColor('#F593F5')
       .setTitle('test embed')
       .addFields(
         { name: 'Server Count', value: msg.client.guilds.cache.size.toString() },
