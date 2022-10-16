@@ -9273,6 +9273,26 @@ if (msg.content.startsWith(prefix + 'help')){
       .setTimestamp();
     msg.reply({embeds: [helpEmbed]})
 }
+  
+   if (msg.content.startsWith(prefix + "select ")) {
+     let info = `${element.name} \nTank: ${element.label} \nId: ${element.id} \\nAlpha: element.alpha + '\nColor: ' + element.blend.amount + '\nMax Health: '  + element.health.max + '\nCurrent Health: '  + element.health.amount + '\nIs Invulnerable: ' + element.invuln + '\nScore: ' + ${element.photo.score  \nLevel:  + element.skill.level`;
+     const selectEmbed = new EmbedBuilder()
+     .setColor()
+     .setTitle('Users')
+      let sendError = true
+      let lookfor = msg.content.split(prefix + "select ").pop()
+      entities.forEach(function(element) {
+        if (typeof element.sendMessage == "function" && element.name == lookfor) {
+          sendError = false
+          
+       //   bot.createMessage(msg.channel.id, String(element.name + '\nTank: ' + element.label + '\nId: ' + element.id + '\nAlpha: ' + element.alpha + '\nColor: ' + element.blend.amount + '\nMax Health: '  + element.health.max + '\nCurrent Health: '  + element.health.amount + '\nIs Invulnerable: ' + element.invuln + '\nScore: ' + element.photo.score + '\nLevel: ' + element.skill.level));
+        }
+      })
+      if (sendError) {
+      //  bot.createMessage(msg.channel.id, "Was unable to find an entity by that name");
+        
+      }
+    }
 })
 /* bot.on('messageCreate', (msg) => {
   try {
