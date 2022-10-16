@@ -9212,6 +9212,9 @@ const client = new Client({
 		GatewayIntentBits.GuildMembers,]
 });
 
+client.login(process.env.bot_token);
+
+
 const bot = new Eris(process.env.bot_token); 
 const bot2 = new Eris(process.env.bot_token);
 var prefix = process.env.prefix
