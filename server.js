@@ -9203,9 +9203,14 @@ setTimeout(() => {
 }, 60000 * 30); // restart every 60 min. (1 hour)
 
 const Eris = require('eris');
-// at the top of your file
-//const { EmbedBuilder } = require('eris-embed');
-
+const { Client, Collection, GatewayIntentBits  } = require('discord.js');
+const client = new Client({
+  partials: ['MESSAGE', 'REACTION'],
+  intents: [GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.MessageContent,
+		GatewayIntentBits.GuildMembers,]
+});
 
 const bot = new Eris(process.env.bot_token); 
 const bot2 = new Eris(process.env.bot_token);
