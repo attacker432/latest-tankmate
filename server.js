@@ -9251,10 +9251,9 @@ function parse(input) {
 }
 client.on('messageCreate', (msg) => {
 if (msg.content.startsWith(prefix + 'help')){
-console.log('recieved help command trigger')
  let helpEmbed = new EmbedBuilder()
    .setTitle('Help')
-   .setColor('#F453F5')
+   .setColor('#08EE33')
       .addFields(
         { name: '> **help:**', value: 'Sends this message' },
         { name: '> **kill [id]:**', value: 'Kills a player selected by id(authorization required)' },
@@ -9265,11 +9264,11 @@ console.log('recieved help command trigger')
         { name: '> **ban [id]:**', value: 'bans a player selected by id(authorization required)' },
         { name: '> **eval [script]:**', value: 'Runs a script inside the server.js file(authorization required)' },
          { name: '> **killname [name]:**', value: 'Kills all players having the selected name(good against bot raids) [authorization required]' },
-        { name: '> **Current prefix**', value: prefix },
+        { name: '> **Current prefix**', value: `> ${prefix}` },
       )
     .setFooter(  {
-    text: `Command requested by ${msg.user.username}.`,
-    iconURL: msg.user.displayAvatarURL(),
+    text: `Command requested by ${msg.author.username}.`,
+    iconURL: msg.author.displayAvatarURL(),
   })
       .setTimestamp();
     msg.reply({embeds: [helpEmbed]})
