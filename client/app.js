@@ -190,7 +190,7 @@ var config = {
   graphical: {
     screenshotMode: !1,
     borderChunk: 1,
-    barChunk: 5,
+    barChunk: 4,
     mininumBorderChunk: 3,
     compensationScale: 1.114,
     inversedRender: !0,
