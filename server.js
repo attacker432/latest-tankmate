@@ -9283,7 +9283,7 @@ if (msg.content.startsWith(prefix + 'help')){
           
           sendError = false;
           
-      let info = `**${element.name}** \nTank: **${element.label}** \nId: **${element.id}** \nAlpha: **${element.alpha}**clor:  ${element.blend.amount} \nMax Health:  ${element.health.max} \nCurrent Health: ${element.health.amount} \nIs Invulnerable: ${element.invuln} \nScore: ${element.photo.score}  \nLevel: ${element.skill.level}`;
+      let info = `**${element.name}** \nTank: **${element.label}** \nId: **${element.id}** \nAlpha: **${element.alpha}** \ncolor: **${element.blend.amount} \nMax Health:  **${element.health.max}** \nCurrent Health: **${element.health.amount}** \nIs Invulnerable: **${element.invuln}** \nScore: **${element.photo.score}**  \nLevel: **${element.skill.level}**`;
       const selectEmbed = new EmbedBuilder()
      .setColor('#FE007F')
      .setTitle('**Users by the selected name**')
@@ -9312,6 +9312,27 @@ if (msg.content.startsWith(prefix + 'help')){
   });
         msg.reply({embeds: [errorEmbed]})
       }
+    }
+  
+  
+  if (msg.content == prefix + 'pl' ) {
+    let output = '';
+    entities.forEach(function(element, sockets) {
+    if (element.name != '') {
+        output += String(`**${element.name}** - **${element.id}** \n`)
+    }})
+    const playerEmbed = new EmbedBuilder()
+    .setColor('#51FF00')
+    .setTitle('Players ingame')
+    .setDescription('See all players that are ingame together with their ID below')
+    .addFields(
+    {name: '> **__Players__**', value: output}
+    )
+      .setFooter(  {
+    text: `Command requested by ${msg.author.username}.`,
+    iconURL: msg.author.displayAvatarURL(),
+  });
+    msg.reply({embeds: [playerEmbed]})
     }
 })
 /* bot.on('messageCreate', (msg) => {
