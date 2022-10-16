@@ -9256,11 +9256,21 @@ console.log('recieved help command trigger')
    .setTitle('Help')
    .setColor('#F453F5')
       .addFields(
-        { name: '> **help**', value: 'Sends this message' },
-        { name: '> **kill [id]**', value: 'Kills a player selected by id(authorization required)' },
-        { name: '> **kick [id]**', value: 'kicks a player selected by id(authorization required)' },
-         { name: '> **kick [id]**', value: 'kicks a player selected by id(authorization required)' }
+        { name: '> **help:**', value: 'Sends this message' },
+        { name: '> **kill [id]:**', value: 'Kills a player selected by id(authorization required)' },
+        { name: '> **kick [id]:**', value: 'kicks a player selected by id(authorization required)' },
+        { name: '> **shutdown**:', value: 'Restarts the game(authorization required)' },
+        { name: '> **say [message]**', value: 'Makes the bot send what you want' },
+        { name: '> **px [new prefix]:**', value: 'Changes the prefix(authorization required)' },
+        { name: '> **ban [id]:**', value: 'bans a player selected by id(authorization required)' },
+        { name: '> **eval [script]:**', value: 'Runs a script inside the server.js file(authorization required)' },
+         { name: '> **killname [name]:**', value: 'Kills all players having the selected name(good against bot raids) [authorization required]' },
+        { name: '> **Current prefix**', value: prefix },
       )
+    .setFooter(  {
+    text: `Command requested by ${msg.user.username}.`,
+    iconURL: msg.user.displayAvatarURL(),
+  })
       .setTimestamp();
     msg.reply({embeds: [helpEmbed]})
 }
