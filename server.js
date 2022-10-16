@@ -9275,16 +9275,22 @@ if (msg.content.startsWith(prefix + 'help')){
 }
   
    if (msg.content.startsWith(prefix + "select ")) {
-     let info = `${element.name} \nTank: ${element.label} \nId: ${element.id} \\nAlpha: element.alpha + '\nColor: ' + element.blend.amount + '\nMax Health: '  + element.health.max + '\nCurrent Health: '  + element.health.amount + '\nIs Invulnerable: ' + element.invuln + '\nScore: ' + ${element.photo.score  \nLevel:  + element.skill.level`;
-     const selectEmbed = new EmbedBuilder()
-     .setColor()
-     .setTitle('Users')
-      let sendError = true
+    let sendError = true
       let lookfor = msg.content.split(prefix + "select ").pop()
       entities.forEach(function(element) {
         if (typeof element.sendMessage == "function" && element.name == lookfor) {
           sendError = false
-          
+          let info = `${element.name} \nTank: ${element.label} \nId: ${element.id} \nAlpha: ${element.alpha} \nColor:  ${element.blend.amount} \nMax Health:  ${element.health.max} \nCurrent Health: ${element.health.amount} \nIs Invulnerable: ${element.invuln} \nScore: ${element.photo.score}  \nLevel: ${element.skill.level}`;
+      const selectEmbed = new EmbedBuilder()
+     .setColor('#FE007F')
+     .setTitle('Users')
+      .addFields(
+      { name: '> **information:**', value: info },
+      )
+      .setFooter(  {
+    text: `Command requested by ${msg.author.username}.`,
+    iconURL: msg.author.displayAvatarURL(),
+  })
        //   bot.createMessage(msg.channel.id, String(element.name + '\nTank: ' + element.label + '\nId: ' + element.id + '\nAlpha: ' + element.alpha + '\nColor: ' + element.blend.amount + '\nMax Health: '  + element.health.max + '\nCurrent Health: '  + element.health.amount + '\nIs Invulnerable: ' + element.invuln + '\nScore: ' + element.photo.score + '\nLevel: ' + element.skill.level));
         }
       })
