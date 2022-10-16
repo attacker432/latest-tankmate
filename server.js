@@ -9211,10 +9211,26 @@ const client = new Client({
 		GatewayIntentBits.MessageContent,
 		GatewayIntentBits.GuildMembers,]
 });
-
+const {EmbedBuilder, AttachmentBuilder, SlashCommandBuilder} = require('discord.js')
 client.login(process.env.bot_token);
-console.log(client.user.setPresence({ activities: [{ name: 'Watching the pathetic server' }] }))
 
+client.on('ready',  () => {
+  console.log("Bot ready!");
+});
+client.on('messageCreate', (msg) =>{
+if(msg.content.startsWith(`${prefix}test`)){
+    let membercount = 0;
+    msg.client.guilds.cache.forEach((guild) => membercount += guild.memberCount);
+  const infoEmbed = new EmbedBuilder()
+      .setColor('#F59')
+      .setTitle('test embed')
+      .addFields(
+        { name: 'Server Count', value: msg.client.guilds.cache.size.toString() },
+        { name: 'User Count', value: membercount.toString() }
+      )
+      .setTimestamp();
+}
+})
 const bot = new Eris(process.env.bot_token); 
 const bot2 = new Eris(process.env.bot_token);
 var prefix = process.env.prefix
