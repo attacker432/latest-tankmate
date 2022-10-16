@@ -9291,8 +9291,8 @@ if (msg.content.startsWith(prefix + 'help')){
     text: `Command requested by ${msg.author.username}.`,
     iconURL: msg.author.displayAvatarURL(),
   })
-       //   bot.createMessage(msg.channel.id, String(element.name + '\nTank: ' + element.label + '\nId: ' + element.id + '\nAlpha: ' + element.alpha + '\nColor: ' + element.blend.amount + '\nMax Health: '  + element.health.max + '\nCurrent Health: '  + element.health.amount + '\nIs Invulnerable: ' + element.invuln + '\nScore: ' + element.photo.score + '\nLevel: ' + element.skill.level));
-        }
+      msg.reply({embeds: [selectEmbed]})
+      }
       })
       if (sendError) {
       //  bot.createMessage(msg.channel.id, "Was unable to find an entity by that name");
