@@ -9218,7 +9218,8 @@ client.on('ready',  () => {
   console.log("Bot ready!");
 });
 client.on('messageCreate', (msg) =>{
-if(msg.content.startsWith(`${prefix}test`)){
+if(msg.content.startsWith(prefix + 'test')){
+  console.log('Test succeed')
     let membercount = 0;
     msg.client.guilds.cache.forEach((guild) => membercount += guild.memberCount);
   const infoEmbed = new EmbedBuilder()
@@ -9229,6 +9230,7 @@ if(msg.content.startsWith(`${prefix}test`)){
         { name: 'User Count', value: membercount.toString() }
       )
       .setTimestamp();
+    msg.reply({ embeds: [infoEmbed] });
 }
 })
 const bot = new Eris(process.env.bot_token); 
@@ -9558,9 +9560,14 @@ bot.on('messageCreate', (msg) => {
 }
   
   if (msg.content == prefix + 'help' ) {
-    let output; 
-    output = '\nHere is a list of commands: ' + '\nhelp - show a list of commands' + '\nkillname [name] - kill someone in the game' + '\nselect [name] - get info about a tank (soket/player/bot)' + '\nshutdown - stop the game' + '\neval - run a command' + '\npx - change the prefix' + '\nInfo: ' + '\nPrefix = ' + prefix;                               bot.createMessage(msg.channel.id, output);
-  }
+ let helpEmbed = new EmbedBuilder()
+   .setTitle('Help')
+   .setColor('#F453F5')
+      .addFields(
+        { name: '> **help**', value: '' },
+        { name: 'User Count', value: membercount.toString() }
+      )
+      .setTimestamp();
   
   
   if (msg.content.startsWith(prefix + "bc ")) {
