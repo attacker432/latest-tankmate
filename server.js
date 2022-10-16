@@ -9277,13 +9277,17 @@ if (msg.content.startsWith(prefix + 'help')){
    if (msg.content.startsWith(prefix + "select ")) {
     let sendError = true
       let lookfor = msg.content.split(prefix + "select ").pop()
+      
       entities.forEach(function(element) {
         if (typeof element.sendMessage == "function" && element.name == lookfor) {
-          sendError = false
-          let info = `${element.name} \nTank: ${element.label} \nId: ${element.id} \nAlpha: ${element.alpha} \nColor:  ${element.blend.amount} \nMax Health:  ${element.health.max} \nCurrent Health: ${element.health.amount} \nIs Invulnerable: ${element.invuln} \nScore: ${element.photo.score}  \nLevel: ${element.skill.level}`;
+          
+          sendError = false;
+          
+      let info = `**${element.name}** \nTank: **${element.label}** \nId: **${element.id}** \nAlpha: **${element.alpha}**clor:  ${element.blend.amount} \nMax Health:  ${element.health.max} \nCurrent Health: ${element.health.amount} \nIs Invulnerable: ${element.invuln} \nScore: ${element.photo.score}  \nLevel: ${element.skill.level}`;
       const selectEmbed = new EmbedBuilder()
      .setColor('#FE007F')
-     .setTitle('Users')
+     .setTitle('**Users by the selected name**')
+     .setDescription('Find the information that you are searching for below!')
       .addFields(
       { name: '> **information:**', value: info },
       )
@@ -9296,7 +9300,17 @@ if (msg.content.startsWith(prefix + 'help')){
       })
       if (sendError) {
       //  bot.createMessage(msg.channel.id, "Was unable to find an entity by that name");
-        
+          const errorEmbed = new EmbedBuilder()
+     .setColor('#FF0100')
+     .setTitle('Oops there was an error')
+     .addFields(
+      { name: '> **Error:**', value: 'Unable to find any entity by that name' },
+      )
+      .setFooter(  {
+    text: `Command requested by ${msg.author.username}.`,
+    iconURL: msg.author.displayAvatarURL(),
+  });
+        msg.reply({embeds: [errorEmbed]})
       }
     }
 })
