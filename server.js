@@ -9338,19 +9338,7 @@ if (msg.content.startsWith(prefix + 'help')){
 /* bot.on('messageCreate', (msg) => {
   try {
     
-    if (msg.content.startsWith(prefix + "select ")) {
-      let sendError = true
-      let lookfor = msg.content.split(prefix + "select ").pop()
-      entities.forEach(function(element) {
-        if (typeof element.sendMessage == "function" && element.name == lookfor) {
-          sendError = false
-          bot.createMessage(msg.channel.id, String(element.name + '\nTank: ' + element.label + '\nId: ' + element.id + '\nAlpha: ' + element.alpha + '\nColor: ' + element.blend.amount + '\nMax Health: '  + element.health.max + '\nCurrent Health: '  + element.health.amount + '\nIs Invulnerable: ' + element.invuln + '\nScore: ' + element.photo.score + '\nLevel: ' + element.skill.level));
-        }
-      })
-      if (sendError) {
-        bot.createMessage(msg.channel.id, "Was unable to find an entity by that name");
-      }
-    }
+    
     if(msg.content.startsWith('status ')){
         let sendError = true
       status = msg.content.split(prefix + "status ").pop()
