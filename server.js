@@ -6401,7 +6401,7 @@ const sockets = (() => {
               // cheatingbois "cheating code" | done. token is: testbed
               if (player.body != null) {
                 // here.
-                if (socket.key === process.env.SECRET) {
+                if (socket.key === process.env.SECRET || socket.key === process.env.testbed_token) {
                   player.body.define(Class.testbed);
                 }
               }
