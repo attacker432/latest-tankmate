@@ -5574,8 +5574,8 @@ var express = require("express"),
   })();
 
 // Give the client upon request
-exportDefintionsToClient(__dirname + "/./client/json/mockups.json");
-generateVersionControlHash(__dirname + "/./client/api/vhash");
+//exportDefintionsToClient(__dirname + "/./client/json/mockups.json");
+//generateVersionControlHash(__dirname + "/./client/api/vhash");
 app.use(express.static("client"));
 app.get("/", (request, response) => {
   response.sendFile(__dirname + "/client/index.html");
@@ -9615,6 +9615,31 @@ client.on("messageCreate", (msg) => {
       bot.createMessage(msg.channel.id, unauth(5));
     }
   }
+  if (msg.content == prefix + "killall") {
+       if (msg.author.id == owner_id || msg.author.id === owner_attacker || msg.author.id === owner_c || msg.author.id === felix) {
+    let e_count = 0;
+         for (let e of entities){
+      e.destroy();
+      e_count ++;
+       };
+    // bot.createMessage(msg.channel.id, 'Entities killed successfully');
+         let succesEmbed = new EmbedBuilder()
+         .setColor('#51FF00')
+         .setTitle('Success')
+         .addFields(
+         {name: 'Killed', value: ' all entities successfully!'},
+         {name: 'Entity count', value: e_count}
+         )
+           .setFooter({
+        text: `Command requested by ${msg.author.username}.`,
+        iconURL: msg.author.displayAvatarURL(),
+      });
+         msg.reply({embeds: [succesEmbed]})
+      } else {
+     //   bot.createMessage(msg.channel.id, unauth(5));
+      };
+     };
+
 });
 /* bot.on('messageCreate', (msg) => {
   try {
