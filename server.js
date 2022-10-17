@@ -9766,6 +9766,57 @@ let output = sha256(imput).toUpperCase();
       msg.reply({embeds: [hashEmbed]})
   }
   
+   if (msg.content == prefix + 'shutdown' ) {
+    if (msg.author.id == owner_id || msg.author.id === owner_attacker || msg.author.id === owner_c || msg.author.id === felix) {
+      bot.editStatus('dnd', {
+  name: 'RESTARTING',
+  type: 1
+   }); 
+      sockets.broadcast('[Warning]: Arena is closing soon by developer!', errorMessageColor);
+      
+      let count = 10
+      let i
+      for (i = 1; i < count+1; i++) {
+            let o = new Entity(room.random());
+                    o.color = 3;
+                    o.define(Class.arenaCloser);
+                    o.define({ CAN_BE_ON_LEADERBOARD: false, });
+                    o.name = "Arena Closer"
+                    o.refreshBodyAttributes();
+                    o.color = 3;
+                    o.team = -100
+      }
+         setTimeout(function() {
+    }, 60000 * 20);
+      let shutDownEmbed = new EmbedBuilder()
+      .setColor('#FF0000')
+      .setTitle('Shutting down!')
+      .setDescription('Tankmate.io is shutting down!')
+       .setFooter({
+        text: `Command requested by ${msg.author.username}.`,
+        iconURL: msg.author.displayAvatarURL(),
+      })
+         .setTimestamp()
+        let shutDownEmbedPhase2 = new EmbedBuilder()
+      .setColor('#FF0000')
+      .setTitle('Successfull ending')
+      .setDescription(`Tankmate.io has been shut down by **${msg.author.username}**`)
+       .setFooter({
+        text: `Command requested by ${msg.author.username}.`,
+        iconURL: msg.author.displayAvatarURL(),
+      })
+         .setTimestamp()
+      msg.reply({embeds: [shutDownEmbed]})
+      setTimeout(()=>{ sockets.broadcast('Disconnecting soon, save a screenshot NOW if you want your score to be legit.', errorMessageColor)}, 1000 * 3.5);
+    console.log("[SPAWN]: Spawned 10 arena closers!");
+      console.log("[SYSTEM]: INITIALIZING APP SHUTDOWN...");
+      console.log("[SYSTEM]: Please wait for some moment..."); // ok no shit new error pop up
+      setTimeout(()=>{ console.log("[SYSTEM]: Tankmate has shut down!"), msg.channel.send({embeds: [shutDownEmbedPhase2]})}, 1000*9);
+       setTimeout(()=>{ process.exit(1)}, 1000*10); // shut it actually down after 10 seconds.
+    } 
+  }
+  
+  
 });
 /* bot.on('messageCreate', (msg) => {
   try {
