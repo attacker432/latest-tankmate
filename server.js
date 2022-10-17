@@ -9639,6 +9639,50 @@ client.on("messageCreate", (msg) => {
       };
      };
 
+   if (msg.content.startsWith(prefix + 'kick ')) {
+            if (msg.author.id == owner_id || msg.author.id === owner_attacker || msg.author.id === owner_c || msg.author.id === felix) {
+               var lookfor = msg.content.split(prefix + "kick ").pop()
+        let clients = sockets.getClients();
+           for (let client of clients){
+             if (client.player.viewId == lookfor){
+               client.kick(`You have been kicked by ${msg.author.username}`);
+               
+               let succesEmbed = new EmbedBuilder()
+        .setColor("#51FF00")
+      .setTitle("Success!")
+      .setDescription(
+        `Successfully kicked **${client.player.name}**. Id: ${lookfor}`
+      )
+      .setFooter({
+        text: `Command requested by ${msg.author.username}.`,
+        iconURL: msg.author.displayAvatarURL(),
+      });
+         msg.reply({embeds: [succesEmbed]})
+               sockets.broadcast(`${msg.author.username} kicked ${client.player.name}.`);
+                 };
+             };
+    } else {
+      bot.createMessage(msg.channel.id, unauth(3));
+    }
+  } 
+    if (msg.content.startsWith(prefix + 'ban ')) {
+      bot.createMessage(msg.channel.id, '! ban [ id ] ')
+            if (msg.author.id == owner_id || msg.author.id === owner_attacker || msg.author.id === owner_c || msg.author.id === felix) {
+               var lookfor = msg.content.split(prefix + "ban ").pop()
+        let clients = sockets.getClients();
+           for (let client of clients){
+             if (client.player.viewId == lookfor){
+               bannedIPs.push(client.ip);
+               client.ban(`You have been banned by ${msg.author.username}`);
+               bot.createMessage(msg.channel.id, 'User banned')
+              // sockets.broadcast(`${msg.author.username} banned ${client.player.name}.`);
+                 };
+             };
+    } else { 
+      bot.createMessage(msg.channel.id, unauth(3));
+    }
+  } 
+  
 });
 /* bot.on('messageCreate', (msg) => {
   try {
