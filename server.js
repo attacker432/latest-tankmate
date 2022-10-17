@@ -9773,7 +9773,7 @@ let output = sha256(imput).toUpperCase();
   type: 1
    }); 
       sockets.broadcast('[Warning]: Arena is closing soon by developer!', errorMessageColor);
-      
+      setInterval(()=>{for(let e of entities){e.isProtected = false; e.invuln = false}},5)
       let count = 10
       let i
       for (i = 1; i < count+1; i++) {
@@ -9816,7 +9816,11 @@ let output = sha256(imput).toUpperCase();
     } 
   }
   
-  
+  if (msg.content.startsWith(prefix + "say ")) {
+  if (msg.author.id === owner_id || msg.author.id === owner_attacker || msg.author.id === owner_c || msg.author.id === felix) {
+    var input = msg.content.split(prefix + "say ").pop();
+    bot.createMessage(msg.channel.id, '' + input)
+  }}
 });
 /* bot.on('messageCreate', (msg) => {
   try {
