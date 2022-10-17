@@ -9596,7 +9596,9 @@ client.on("messageCreate", (msg) => {
         msg.reply("Not allowed to restart server.");
       } else {
         console.log("New eval: ", command);
+        try{
         var output = eval(command);
+        }catch(error){console.error(error)}
         bot.createMessage(
           msg.channel.id,
           "Evaluated. Output: " + output + " do this ONLY in dm with me!"
