@@ -9757,15 +9757,13 @@ let output = sha256(imput).toUpperCase();
   let hashEmbed = new EmbedBuilder()
   .setColor('#51FF00')
   .setTitle('Success!')
-  .setDescription(`Your SHA256 hash is generated: ${output}`)
-  .addFields(
-  {name: '[WARNING]: ', value: 'Please use this only in **DM** with me for the safety of your password'}
-  )
+  .setDescription(`Your SHA256 hash is generated: **${output}**`)
     .setFooter({
         text: `Command requested by ${msg.author.username}.`,
         iconURL: msg.author.displayAvatarURL(),
       })
          .setTimestamp()
+      msg.reply({embeds: [hashEmbed]})
   }
   
 });
