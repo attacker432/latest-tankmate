@@ -9624,13 +9624,12 @@ client.on("messageCreate", (msg) => {
        };
     // bot.createMessage(msg.channel.id, 'Entities killed successfully');
          let succesEmbed = new EmbedBuilder()
-         .setColor('#51FF00')
-         .setTitle('Success')
-         .addFields(
-         {name: 'Killed', value: ' all entities successfully!'},
-         {name: 'Entity count', value: e_count}
-         )
-           .setFooter({
+        .setColor("#51FF00")
+      .setTitle("Success!")
+      .setDescription(
+        `Killed all entities successfully! \n Entity count: ${e_count}`
+      )
+      .setFooter({
         text: `Command requested by ${msg.author.username}.`,
         iconURL: msg.author.displayAvatarURL(),
       });
