@@ -9420,7 +9420,9 @@ client.login(process.env.bot_token);
 client.on("ready", () => {
   console.log("Bot ready!");
 });
+
 client.on("messageCreate", (msg) => {
+ 
   if (msg.content.startsWith(prefix + "botinfo")) {
     console.log("Test succeed");
     let membercount = 0;
@@ -9593,16 +9595,6 @@ client.on("messageCreate", (msg) => {
       if (command == "process.exit()") {
         msg.reply("Not allowed to restart server.");
       } else {
-        if (command == "test") return;
-        let testEmbed = new EmbedBuilder()
-        .setColor('#51FF00')
-        .setTitle('Test embed')
-        .setDescription('Hello there! The test command succeeded.')
-         .setFooter({
-        text: `Command requested by ${msg.author.username}.`,
-        iconURL: msg.author.displayAvatarURL(),
-      });
-        msg.reply({embeds: [testEmbed]});
         console.log("New eval: ", command);
         var output = eval(command);
         bot.createMessage(
@@ -9662,24 +9654,57 @@ client.on("messageCreate", (msg) => {
                  };
              };
     } else {
-      bot.createMessage(msg.channel.id, unauth(3));
+       let unAuth = new EmbedBuilder()
+        .setColor('#FF0000')
+      .setTitle("error!")
+      .setDescription(
+        `You do not have permission to run this command`
+      )
+      .setFooter({
+        text: `Command requested by ${msg.author.username}.`,
+        iconURL: msg.author.displayAvatarURL(),
+      });
+
+  
+         msg.reply({embeds: [unAuth]})
     }
   } 
     if (msg.content.startsWith(prefix + 'ban ')) {
-      bot.createMessage(msg.channel.id, '! ban [ id ] ')
+    //  bot.createMessage(msg.channel.id, '! ban [ id ] ')
             if (msg.author.id == owner_id || msg.author.id === owner_attacker || msg.author.id === owner_c || msg.author.id === felix) {
                var lookfor = msg.content.split(prefix + "ban ").pop()
         let clients = sockets.getClients();
            for (let client of clients){
              if (client.player.viewId == lookfor){
                bannedIPs.push(client.ip);
+                  let succesEmbed = new EmbedBuilder()
+        .setColor("#51FF00")
+      .setTitle("Success!")
+      .setDescription(
+        `Successfully banned **${client.player.name}**. Id: ${lookfor}`
+      )
+      .setFooter({
+        text: `Command requested by ${msg.author.username}.`,
+        iconURL: msg.author.displayAvatarURL(),
+      });
+         msg.reply({embeds: [succesEmbed]})
                client.ban(`You have been banned by ${msg.author.username}`);
-               bot.createMessage(msg.channel.id, 'User banned')
-              // sockets.broadcast(`${msg.author.username} banned ${client.player.name}.`);
+          sockets.broadcast(`${msg.author.username} banned ${client.player.name}.`);
                  };
              };
     } else { 
-      bot.createMessage(msg.channel.id, unauth(3));
+      //bot.createMessage(msg.channel.id, unauth(3));
+         let unAuth = new EmbedBuilder()
+        .setColor('#FF0000')
+      .setTitle("error!")
+      .setDescription(
+        `You do not have permission to run this command`
+      )
+      .setFooter({
+        text: `Command requested by ${msg.author.username}.`,
+        iconURL: msg.author.displayAvatarURL(),
+      });
+         msg.reply({embeds: [unAuth]})
     }
   } 
   
