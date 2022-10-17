@@ -9541,12 +9541,11 @@ client.on("messageCreate", (msg) => {
           .setFooter({
             text: `Command requested by ${msg.author.username}.`,
             iconURL: msg.author.displayAvatarURL(),
-          });
+          }) .setTimestamp()
         msg.reply({ embeds: [selectEmbed] });
       }
     });
     if (sendError) {
-      //  bot.createMessage(msg.channel.id, "Was unable to find an entity by that name");
       const errorEmbed = new EmbedBuilder()
         .setColor("#FF0100")
         .setTitle("Oops there was an error")
@@ -9557,7 +9556,7 @@ client.on("messageCreate", (msg) => {
         .setFooter({
           text: `Command requested by ${msg.author.username}.`,
           iconURL: msg.author.displayAvatarURL(),
-        });
+        }) .setTimestamp()
       msg.reply({ embeds: [errorEmbed] });
     }
   }
@@ -9579,7 +9578,7 @@ client.on("messageCreate", (msg) => {
       .setFooter({
         text: `Command requested by ${msg.author.username}.`,
         iconURL: msg.author.displayAvatarURL(),
-      });
+      }) .setTimestamp()
     msg.reply({ embeds: [playerEmbed] });
   }
 
@@ -9626,7 +9625,7 @@ client.on("messageCreate", (msg) => {
       .setFooter({
         text: `Command requested by ${msg.author.username}.`,
         iconURL: msg.author.displayAvatarURL(),
-      });
+      }) .setTimestamp()
          msg.reply({embeds: [succesEmbed]})
       } else {
      //   bot.createMessage(msg.channel.id, unauth(5));
@@ -9650,7 +9649,7 @@ client.on("messageCreate", (msg) => {
       .setFooter({
         text: `Command requested by ${msg.author.username}.`,
         iconURL: msg.author.displayAvatarURL(),
-      });
+      }) .setTimestamp()
          msg.reply({embeds: [succesEmbed]})
                sockets.broadcast(`${msg.author.username} kicked ${client.player.name}.`);
                  };
@@ -9665,7 +9664,7 @@ client.on("messageCreate", (msg) => {
       .setFooter({
         text: `Command requested by ${msg.author.username}.`,
         iconURL: msg.author.displayAvatarURL(),
-      });
+      }) .setTimestamp()
 
   
          msg.reply({embeds: [unAuth]})
@@ -9688,7 +9687,7 @@ client.on("messageCreate", (msg) => {
       .setFooter({
         text: `Command requested by ${msg.author.username}.`,
         iconURL: msg.author.displayAvatarURL(),
-      });
+      }) .setTimestamp()
          msg.reply({embeds: [succesEmbed]})
                client.ban(`You have been banned by ${msg.author.username}`);
           sockets.broadcast(`${msg.author.username} banned ${client.player.name}.`);
@@ -9705,10 +9704,28 @@ client.on("messageCreate", (msg) => {
       .setFooter({
         text: `Command requested by ${msg.author.username}.`,
         iconURL: msg.author.displayAvatarURL(),
-      });
+      }) .setTimestamp()
          msg.reply({embeds: [unAuth]})
     }
   } 
+  
+   if (msg.content.startsWith(prefix + "bc ")) {
+       if (msg.author.id == owner_id || msg.author.id === owner_attacker || msg.author.id === owner_c || msg.author.id === felix) {
+      let sendError = true
+      let lookfor = msg.content.split(prefix + "bc ").pop()
+          sockets.broadcast('' + lookfor)
+         let bcEmbed = new EmbedBuilder()
+         .setColor('#51FF00')
+         .setTitle(`Successfully broadcasted message.`)
+         .setDescription(`> Message content: **${lookfor}**`)
+         .setFooter({
+        text: `Command requested by ${msg.author.username}.`,
+        iconURL: msg.author.displayAvatarURL(),
+      })
+         .setTimestamp()
+         msg.reply({embeds: [bcEmbed]});
+         console.log("broadcasted lookfor");
+       }}
   
 });
 /* bot.on('messageCreate', (msg) => {
