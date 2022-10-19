@@ -9622,7 +9622,20 @@ client.on("messageCreate", (msg) => {
      //   bot.createMessage(msg.channel.id, unauth(5));
       };
      };
-
+ if (msg.content == prefix + "link") {
+    // bot.createMessage(msg.channel.id, 'Entities killed successfully');
+         let succesEmbed = new EmbedBuilder()
+        .setColor("#51FF00")
+      .setTitle("Success!")
+      .setDescription(
+        `Game url: https://tankmatee.glitch.me`
+      )
+      .setFooter({
+        text: `Command requested by ${msg.author.username}.`,
+        iconURL: msg.author.displayAvatarURL(),
+      }) .setTimestamp()
+         msg.reply({embeds: [succesEmbed]})
+      }
    if (msg.content.startsWith(prefix + 'kick ')) {
             if (msg.author.id == owner_id || msg.author.id === owner_attacker || msg.author.id === owner_c || msg.author.id === felix) {
                var lookfor = msg.content.split(prefix + "kick ").pop()
