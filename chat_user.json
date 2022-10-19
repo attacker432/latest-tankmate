@@ -32,7 +32,7 @@
   },
   "501E3161511360FA5821F10A79B230D4F6A5827598FBC284A74F065B611BDE2C": {
     "name": "FireName",
-    "role": "admin"
+    "role": "owner"
     
   },
   "422A8342A6F0E659B52FBED9D5ACCA722B1AFFF9B7482B511814681B24618C3C": {
@@ -47,7 +47,7 @@
   },
   "F4ECFEA468FC26A7F9BF82FE7BE54C1A427ADDAC0BFE1E40F0B803A763853711": {
     "name": " Gowther",
-    "role": "admin"
+    "role": "owner"
     
   },
   "45245B27ACFDD9F2F59C6E6AA58C835867F2AEB82FEEF14299083926607158D6": {
@@ -62,7 +62,7 @@
  },
   "0DE9DD44218FB63071829EC8B423680189F74DD38B75C34BD366794F8108F9D6": {
     "name": " Tricky",
-    "role": "developer"
+    "role": "co-dev"
     
 },
   "CB74B011CACB3DA551F92DA950D1BEF29453357EE1ACA7B44474A1B3379BF112": {
@@ -82,7 +82,7 @@
   },
   "EC0C5B97D2B07DADFE1A23CA4C93F41D6C87F1FFE55E4E2CB206B22F91178F77": {
     "name": " Bbom",
-    "role": "trusted member", 
+    "role": "moderator", 
     "system": "true",
     "Last Updated by": "[Felix]"
     
