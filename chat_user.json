@@ -97,10 +97,10 @@
 },
   "67ABAFAB0C5A4F2CED15EA2047FA2D609C13DB21272B1548838F55329C5581CD": {
     "name": " a yoyo loach",
-    "role": "moderator",  
+    "role": "admin",  
     "system": "true",
     "color": "yellow",
-    "Last Updated by": "[Felix]"
+    "Last Updated by": "[attacker]"
     
 
  }

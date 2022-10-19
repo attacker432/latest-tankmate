@@ -6102,21 +6102,12 @@ const sockets = (() => {
                         socket.role
                       );
                     } else {
-                      blacklisted_users.forEach((i) => {
-                        if (playerName === i) {
-                          return true;
-                        }
-                      });
-                      if (true) {
-                        console.log("ERROR 5: blacklisted user detected");
-                      } else {
                         sockets.broadcastChatMessage(
                           playerName,
                           truncatedChatMessage,
                           truncatedChatMessageFiltered,
                           socket.role
                         );
-                      }
                     }
                   } catch (error) {
                     util.error(error);
